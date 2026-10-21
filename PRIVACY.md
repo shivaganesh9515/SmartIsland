@@ -1,56 +1,35 @@
 # Privacy Policy
 
-Last updated: July 4, 2026
+Last updated: October 21, 2026
 
-Smart Island is designed to run locally on your Android device. This document explains what the app can access and how that information is used.
+Smart Island processes information on your Android device to show notifications and system activity in its floating island. Some optional features use the internet. This policy describes what the app reads, stores, and sends.
 
-## Information The App Processes
+## Information the app processes
 
-When you enable notification listener access, Smart Island can process notification metadata from other apps so it can display the floating island experience. This may include:
+If you grant notification access, the app reads notification details such as the sending app, title, text, icons, actions, and call or media status. It uses accessibility access to identify foreground app windows and handle selected interface actions; it does not need to read the text displayed inside other apps for the island overlay. Overlay access displays the island above other apps.
 
-- App name and package name
-- Notification title and text
-- Notification icons or large images
-- Notification action labels and action intents
-- Call and media notification categories
-- Media metadata such as artwork, playback state, duration, and position when available
+The app also processes settings and, when you use the relevant features, calendar events, approximate location, network status, and Bluetooth device information.
 
-The app also stores local island settings, such as enabled state, size, position, and corner radius.
+## Network requests
 
-## How Information Is Used
+The app does not include advertising or analytics SDKs and does not send notification content to its servers. Network requests are used for these features:
 
-Notification data is used to render the island UI, show demo or real notification states, open notification content, dismiss notifications, and update media/call presentation.
+- The About and update screens request public release, contributor, commit, and repository information from GitHub. These requests identify the app through a fixed user agent and do not include notification contents or account credentials.
+- Weather lookups send coordinates rounded to one decimal place (about 10 km) to Open-Meteo, or to the custom HTTPS weather service you configure. If automatic location is selected and a recent location is unavailable, the app may query an IP geolocation provider; that provider receives the network request and can see your IP address.
+- When the VPN status card needs a city label, the app may query an IP geolocation service through the VPN network. That service can see the VPN network's public IP address.
 
-Settings are used to remember your preferred island appearance and position.
+External links open GitHub, email, or social pages in another app or browser. Those services have their own privacy practices.
 
-## Data Sharing
+## Storage and retention
 
-At the time of this policy, Smart Island:
+Island settings and weather cache data are stored locally. Notification history is off by default; if you enable it, notification details are stored locally for the retention period selected in the app. Diagnostic reports are generated only when you choose to export them. They include device and app details, settings, recorded diagnostic logs, and process logcat, so review a report before sharing it.
 
-- Does not request the Android `INTERNET` permission.
-- Does not include analytics or advertising SDKs.
-- Does not send notification content to a remote server.
-- Does not sell or share user data.
+The app does not intentionally upload notification content. Keep in mind that Android backup or device-transfer behavior may depend on your Android version and device settings.
 
-External links in the app may open GitHub, email, or social/profile pages in another app or browser. Those external apps and services have their own privacy practices.
+## Your controls
 
-## Data Retention
-
-Notification details are kept in app memory while Smart Island is running and while the notification is active in the island. Local settings are stored on your device using AndroidX DataStore Preferences until you clear app data or uninstall the app.
-
-## Your Controls
-
-You can:
-
-- Turn off Smart Island in the app.
-- Revoke overlay permission in Android settings.
-- Revoke notification listener access in Android settings.
-- Clear app storage or uninstall the app to remove local settings.
-
-## Changes
-
-If the app adds network features, analytics, crash reporting, accounts, cloud sync, or any other data sharing behavior, this policy should be updated before release.
+You can disable Smart Island, revoke its overlay or notification access, turn off notification history, disable optional weather or VPN location features, clear app storage, or uninstall the app. Android may request additional access for optional features such as calendar, location, or Shizuku-based system integrations.
 
 ## Contact
 
-For privacy questions, open an issue in this repository without including private notification content.
+For privacy questions, open an issue in this repository without including private notification content, diagnostic reports, or secrets.

@@ -984,7 +984,9 @@ class SmartIslandNotificationListenerService : NotificationListenerService() {
             settings.navigationEnabled,
             settings.deviceType
         )
-        android.util.Log.d(TAG, "handleNotificationPosted: mode=$mode key=${sbn.key} title=${extras.getCharSequence(Notification.EXTRA_TITLE)}")
+        // Notification titles can contain private message previews, OTPs, or transaction details.
+        // Keep them out of logcat, which is also included in a user-exported diagnostic report.
+        android.util.Log.d(TAG, "handleNotificationPosted: mode=$mode key=${sbn.key}")
 
         // Quiet imports of what is already in the shade are not new alerts, so they neither count
         // towards the spam threshold nor get buffered.

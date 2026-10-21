@@ -203,7 +203,7 @@ fun UpdatesAndDownloadsSection(
         TopContributorsCard(
             contributors = contributors,
             onContributeClick = {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/agupta07505/SmartIsland/blob/main/CONTRIBUTING.md"))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/shivaganesh9515/SmartIsland/blob/main/CONTRIBUTING.md"))
                 runCatchingLogged("UpdatesAndDownloads", "Failed to open Contributing link") {
                     context.startActivity(intent)
                 }

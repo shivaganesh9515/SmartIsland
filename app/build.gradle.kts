@@ -28,11 +28,11 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.agupta07505.smartisland"
+        applicationId = "com.shivaganesh9515.smartisland"
         minSdk = 26
         targetSdk = 36
-        versionCode = 9
-        versionName = "7.6.0"
+        versionCode = 1
+        versionName = "7.6.1"
     }
 
     buildFeatures {

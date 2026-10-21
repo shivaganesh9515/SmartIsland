@@ -1,6 +1,6 @@
 # Release Signing With GitHub Actions
 
-This project can build a signed release APK in GitHub Actions without committing the keystore. The workflow lives at `.github/workflows/android.yml`.
+This fork builds a signed release APK in GitHub Actions without committing the keystore. The workflow lives at `.github/workflows/release.yml`.
 
 ## 1. Keep Signing Files Private
 
@@ -14,27 +14,15 @@ Never commit these files:
 
 They are ignored by `.gitignore`.
 
-## 2. Generate The Base64 Secret File
+## 2. Add The Signing Secrets
 
-From the project root on Windows:
-
-```powershell
-.\scripts\export-keystore-base64.ps1 -KeystorePath .\smartIsland.jks
-```
-
-This creates:
-
-```text
-smartIsland_base64.txt
-```
-
-Open that file locally and copy the full single-line content into a GitHub repository secret named:
+The release workflow reads the private keystore from a GitHub repository secret named:
 
 ```text
 ANDROID_KEYSTORE_BASE64
 ```
 
-Do not commit `smartIsland_base64.txt`.
+Never commit or share the private keystore or password.
 
 ## 3. Add GitHub Repository Secrets
 
@@ -48,28 +36,18 @@ Add these secrets:
 
 | Secret name | Value |
 | --- | --- |
-| `ANDROID_KEYSTORE_BASE64` | Full content of `smartIsland_base64.txt` |
-| `ANDROID_KEYSTORE_PASSWORD` | Keystore/store password |
+| `ANDROID_KEYSTORE_BASE64` | Base64-encoded JKS keystore |
+| `ANDROID_KEYSTORE_PASSWORD` | Keystore and signing key password |
 
 The workflow detects the key alias from `smartIsland.jks` automatically and uses `ANDROID_KEYSTORE_PASSWORD` as the key password.
 
 ## 4. Build A Release
 
-Manual release build:
+Pushing a change to `app/build.gradle.kts` on `main` starts the release workflow when the version has no existing tag. The workflow builds, verifies, and publishes the APK as a GitHub release with a matching version tag.
 
-1. Go to the repository on GitHub.
-2. Open `Actions`.
-3. Select `Build Android APK`.
-4. Click `Run workflow`.
+To publish a release manually, run the `Release` workflow from the repository's Actions page.
 
-Tag release:
-
-```bash
-git tag v3.2.1
-git push origin v3.2.1
-```
-
-When a tag starting with `v` is pushed, the workflow builds signed artifacts and publishes them to a GitHub release. Direct pushes to `main` and `dev` never build or publish releases under any circumstances.
+The package name for this fork is `com.shivaganesh9515.smartisland`; it installs separately from the upstream app. Keep the same signing key for every later update to this package.
 
 ## What Is `RUNNER_TEMP`?
 
@@ -86,7 +64,7 @@ That file is created inside GitHub's temporary runner environment, used for sign
 The workflow uploads one signed release APK:
 
 ```text
-SmartIsland-v3.0.apk
+SmartIsland-v7.6.1.apk
 ```
 
 The version part comes from `versionName` in `app/build.gradle.kts`.

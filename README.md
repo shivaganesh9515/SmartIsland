@@ -8,20 +8,19 @@
   <strong>A lightweight, privacy-first Android overlay that shows notifications, media, calls and more around your camera cutout.</strong>
 </p>
 
+> This is an unofficial, independently signed community fork of [Animesh Gupta's Smart Island](https://github.com/agupta07505/SmartIsland), preserved under GPL-3.0. It uses a separate Android package ID and installs separately from the upstream app.
+
 <p align="center">
-  <a href="https://github.com/agupta07505/SmartIsland/releases">
-    <img src="https://img.shields.io/github/v/release/agupta07505/SmartIsland?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github&logoColor=white" alt="Latest Release" />
+  <a href="https://github.com/shivaganesh9515/SmartIsland/releases">
+    <img src="https://img.shields.io/github/v/release/shivaganesh9515/SmartIsland?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github&logoColor=white" alt="Latest Release" />
   </a>
   <img src="https://img.shields.io/badge/Platform-Android%208.0%2B-3DDC84?style=for-the-badge&labelColor=1e1e2e&logo=android&logoColor=white" alt="Android 8.0+" />
   <img src="https://img.shields.io/badge/License-GNU%20GPLv3-3b82f6?style=for-the-badge&labelColor=1e1e2e&logo=gnu&logoColor=white" alt="GNU GPLv3" />
-  <a href="https://github.com/agupta07505/SmartIsland/actions/workflows/build.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/agupta07505/SmartIsland/build.yml?branch=main&style=for-the-badge&labelColor=1e1e2e&label=CI&color=10b981&logo=githubactions&logoColor=white" alt="CI Build Status" />
+  <a href="https://github.com/shivaganesh9515/SmartIsland/actions/workflows/release.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/shivaganesh9515/SmartIsland/release.yml?branch=main&style=for-the-badge&labelColor=1e1e2e&label=Release&color=10b981&logo=githubactions&logoColor=white" alt="Release Build Status" />
   </a>
   <a href="https://telegram.me/SmartIslandApp" target="_blank">
     <img src="https://img.shields.io/badge/Telegram-Community-2CA5E0?style=for-the-badge&labelColor=1e1e2e&logo=telegram&logoColor=white" alt="Telegram Community" />
-  </a>
-  <a href="https://www.virustotal.com/gui/file/c07da408e7fa3e3fdeb25ec6415af07f1d56eff099840221138e9364c6065102/details" target="_blank">
-    <img src="https://img.shields.io/badge/VirusTotal-Verified%20Clean-007ACC?style=for-the-badge&labelColor=1e1e2e&logo=virustotal&logoColor=white" alt="VirusTotal Verified Clean" />
   </a>
 </p>
 
@@ -40,7 +39,7 @@
 
 Smart Island puts a small pill around your camera cutout or status bar. Notifications, music, calls, charging, timers and navigation show up in it, and a tap opens each one into a card. When nothing is going on, a clock, the weather, your net speed or the next alarm take turns in the same spot.
 
-Everything happens on your device. There is no account, no analytics and no cloud.
+Notification processing and settings run locally. There is no account, analytics, or cloud sync. Optional network requests and the data they use are described in [PRIVACY.md](PRIVACY.md).
 
 ---
 
@@ -141,7 +140,7 @@ Smart Island asks for what it needs to do its job and nothing more:
 - **Foreground service and battery optimisation** so Android keeps it alive.
 - **Usage access, Shizuku** (optional) for one-tap setup and the privacy indicator app inspector.
 - **Calendar, location and Bluetooth** only for the widgets that use them: next event, weather, and earbud battery.
-- **Internet** only for the update check you choose to run and the weather lookup. No notification content ever leaves the device.
+- **Internet** for public GitHub release information, optional weather, and VPN location lookup. Notification content is not sent to a remote server.
 
 More in [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md). You can also check a build on [VirusTotal](https://www.virustotal.com/gui/file/c07da408e7fa3e3fdeb25ec6415af07f1d56eff099840221138e9364c6065102/details) or follow the public CI runs.
 
@@ -152,7 +151,7 @@ More in [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md). You can also ch
 You need the Android SDK (API 26 to 36), JDK 17 and the bundled Gradle wrapper.
 
 ```bash
-git clone https://github.com/agupta07505/SmartIsland.git
+git clone https://github.com/shivaganesh9515/SmartIsland.git
 cd SmartIsland
 ./gradlew assembleDebug
 adb install -r app/build/outputs/apk/debug/app-debug.apk

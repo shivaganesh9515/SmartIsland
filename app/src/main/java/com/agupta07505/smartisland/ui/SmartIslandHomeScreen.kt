@@ -1532,7 +1532,7 @@ private fun WelcomeDialog(
                 Button(
                     onClick = {
                         runCatchingLogged("WelcomeDialog", "Failed to open GitHub link") {
-                            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/agupta07505/SmartIsland")))
+                            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/shivaganesh9515/SmartIsland")))
                         }
                     },
                     modifier = Modifier.fillMaxWidth(),
